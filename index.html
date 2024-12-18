@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background-color: black;
+      color: gold;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    nav a {
+      color: #f2f2f2;
+      padding: 14px 16px;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    nav a.active {
+      background-color: #4CAF50;
+    }
+
+    section {
+      text-align: center;
+      padding: 50px;
+      width: 80%;
+      max-width: 600px;
+      color: gold;
+    }
+
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Three columns */
+      grid-gap: 20px;
+      justify-content: center;
+    }
+
+    .photo-gallery img {
+      max-width: 100%; /* Important for grid to work correctly */
+      height: auto;
+      border: 5px solid gold;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .modal-content:hover {
+      transform: scale(1.01);
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: red;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#monthlyplan">Monthly Plan</a>
+    <a href="#photos">Photos</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <h1>Welcome to My Website!</h1>
+    <br>
+    <img src="website_logo.jpg" alt="your logo">
+    <br>
+    <br>
+    <p>This is a simple example of a website with a fixed navigation bar.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <br>
+    <p>This section provides information about our company or project.</p>
+  </section>
+
+  <section id="monthlyplan">
+    <h2>Monthly Plan</h2>
+    <br>
+    <p>This section provides information about our monthly plan for our company or project.</p>
+  </section>
+
+  <section id="photos">
+    <h2>Photos</h2>
+    <br>
+    <div class="photo-gallery">
+      <img src="image01.jpg" alt="Image 1" onclick="openModal(this)">
+      <img src="image02.jpg" alt="Image 2" onclick="openModal(this)">
+      <img src="image03.jpg" alt="Image 3" onclick="openModal(this)">
+      <img src="image04.jpg" alt="Image 4" onclick="openModal(this)">
+      <img src="image05.jpg" alt="Image 5" onclick="openModal(this)">
+      <img src="image06.jpg" alt="Image 6" onclick="openModal(this)">
+      <img src="image07.jpg" alt="Image 7" onclick="openModal(this)">
+      <img src="image08.jpg" alt="Image 8" onclick="openModal(this)">
+      <img src="image09.jpg" alt="Image 9" onclick="openModal(this)">
+    </div>
+
+    <div id="myModal" class="modal" onclick="closeModal()">
+      <span class="close" onclick="event.stopPropagation(); closeModal()">&times;</span>
+      <img class="modal-content" id="image_preview">
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <br>
+    <p>
+      You can reach us at:
+      <br>
+      Email: <a href="mailto:your_email@example.com">your_email@example.com</a>
+      <br>
+      Phone: +1 123-456-7890
+    </p>
+    <br>
+    <br>
+    <img src="website_logo.jpg" alt="your logo">
+  </section>
+
+  <script>
+    function openModal(img) {
+      document.getElementById("myModal").style.display = "block";
+      document.getElementById("image_preview").src = img.src;
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
