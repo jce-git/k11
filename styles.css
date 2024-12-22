@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: verdana;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -7,8 +7,8 @@ body {
   min-height: 100vh;
   /* color of the website background */
   background-color: #121212;
-  /* color of the website font */
-  color: green;
+  /* color of the website ??? */
+  color: gold;
 }
 
 nav {
@@ -38,7 +38,7 @@ section {
   padding: 50px;
   width: 80%;
   max-width: 600px;
-  color: gold;
+  color: green;
 }
 
 .photo-gallery {
