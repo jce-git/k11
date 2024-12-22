@@ -11,9 +11,19 @@ body {
   color: #ffe14d;
 }
 
-h1 { color: whitesmoke; }
-h2 { color: whitesmoke; }
-h3 { color: #ffdb3a; }
+/* header tag settings */
+h2 {
+  color: whitesmoke;
+}
+
+h3 {
+  color: #ffdb3a;
+}
+
+h6 {
+  color: whitesmoke;
+}
+
 
 
 /* naviagation bar settings */
