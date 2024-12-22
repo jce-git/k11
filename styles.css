@@ -5,8 +5,10 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  /* color of the website background */
   background-color: #121212;
-  color: gold;
+  /* color of the website font */
+  color: #ffe14d;
 }
 
 nav {
