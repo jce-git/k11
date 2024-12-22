@@ -41,6 +41,7 @@ p {
 
 /* naviagation bar settings */
 nav {
+  font-size: 18px;
   position: fixed;
   top: 0;
   width: 100%;
