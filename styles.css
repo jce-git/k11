@@ -14,7 +14,7 @@ body {
 /* header tag settings */
 h2 {
   color: #050505;
-    background-color: #FFC704; /* Tło w kolorze CMYK ffce04ff (HEX #FFC704) */
+  background-color: #FFC704; /* Tło w kolorze CMYK ffce04ff (HEX #FFC704) */
   padding: 8px; /* Opcjonalnie: odstęp między tekstem a krawędzią tła */
   border-radius: 4px; /* Opcjonalnie: zaokrąglenie rogów */
 }
