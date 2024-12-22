@@ -6,16 +6,19 @@ body {
   align-items: center;
   min-height: 100vh;
   /* color of the website background */
-  background-color: #121212;
-  /* color of the website ??? */
-  color: gold;
+  background-color: #050505;
+  /* color of the website font (overwritten by code in section block!) */
+  color: #ffe14d;
 }
 
+
+
+/* naviagation bar settings */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #333;
+  background-color: #121212;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,17 +33,25 @@ nav a {
 }
 
 nav a.active {
-  background-color: #4CAF50;
+  color: #000;
+  background-color: #ffdb3a;
+  font-weight: bold;
 }
 
+
+
+/* section settings */
 section {
   text-align: center;
   padding: 50px;
   width: 80%;
   max-width: 600px;
-  color: green;
+  color: #ffe14d;
 }
 
+
+
+/* photo gallery settings */
 .photo-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -51,7 +62,7 @@ section {
 .photo-gallery img {
   max-width: 100%;
   height: auto;
-  border: 5px solid gold;
+  border: 5px solid #ffe14d;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   transition: transform 0.3s ease;
