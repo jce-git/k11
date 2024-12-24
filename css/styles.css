@@ -15,6 +15,7 @@ body {
 
 /* header tag settings */
 h2 {
+  font-size: 21px;
   color: #080808;
   background-color: #ffdb3a; /* Tło w kolorze CMYK ffce04ff (HEX #FFC704) */
   padding: 8px; /* Opcjonalnie: odstęp między tekstem a krawędzią tła */
@@ -52,9 +53,10 @@ p {
 /* navigation bar settings */
 nav {
   font-size: 16px;
-  position: fixed;
+  position: fixed; /* or absolute, depending on your layout */
   top: 0;
   width: 100%;
+  z-index: 1000; /* A high value to ensure it is above other elements */
   background-color: #242424;
   max-height: 100vh; /* Set the maximum height to the viewport height */
   overflow-x: auto; /* Add horizontal scrollbar if content overflows */

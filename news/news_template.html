@@ -2,14 +2,14 @@
 <html>
 <head>
   <title>K11 - Olsztyński Klub Gier Planszowych</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
   <nav>
     <a href="#home" class="active">Home</a>
     <a href="#news">Aktualności</a>
     <a href="#contact">Kontakt</a>
-    <a href="index.html">Powrót do strony głównej</a>
+    <a href="../index.html">Powrót do strony głównej</a>
   </nav>
 
   <section id="home">
@@ -17,10 +17,10 @@
     <h2>Witamy na podstronie - Aktualności</h2>
     <br>
     <p>Olsztyńskiego Klubu Gier Planszowych - K11 !</p>
-    <p><a href="index.html">powrót do strony głównej</a></p>
+    <p><a href="../index.html">powrót do strony głównej</a></p>
     <br>
     <br>
-    <img src="images/website_logo.png" alt="website_logo.png">
+    <img src="../images/website_logo.png" alt="../website_logo.png">
 
   </section>
 
@@ -55,50 +55,8 @@
         <span class="close_button" onclick="closeModal()">&times;</span>
     </div>
 
-    <!-- Code used for photo gallery -->
-    <script>
-        let currentImageIndex = 0;
-        const images = document.querySelectorAll('img'); // Select all images
-
-        function openModal(img) {
-        document.getElementById("myModal").style.display = "flex";
-        document.getElementById("image_preview").src = img.src;
-        currentImageIndex = Array.from(images).indexOf(img); // Get the index of the clicked image
-        }
-
-        function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-        }
-
-        function showImage(index) {
-        if (index >= 0 && index < images.length) {
-            document.getElementById("image_preview").src = images[index].src;
-            currentImageIndex = index;
-        }
-        }
-
-        // Add event listener for Escape, Left, and Right keys
-        document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape") {
-            closeModal();
-        } else if (event.key === "ArrowLeft") {
-            showImage(currentImageIndex - 1);
-        } else if (event.key === "ArrowRight") {
-            showImage(currentImageIndex + 1);
-        }
-        });
-
-        // Add event listeners for prev and next arrows
-        document.getElementById("previous_image_button").addEventListener("click", function(event) {
-        event.stopPropagation(); // Prevent modal close
-        showImage(currentImageIndex - 1);
-        });
-
-        document.getElementById("next_image_button").addEventListener("click", function(event) {
-        event.stopPropagation(); // Prevent modal close
-        showImage(currentImageIndex + 1);
-        });
-    </script>
+    <!-- Link to external photo_gallery_script.js file -->
+    <script src="../scripts/photo_gallery_script.js"></script>
   </section>
 
   <section id="contact">
@@ -110,11 +68,11 @@
     <br>
     <br>
     <br>
-    <img src="images/website_logo.png" alt="website_logo.png">
+    <img src="../images/website_logo.png" alt="website_logo.png">
     <br>
     <br>
     <br>
-    <p><a href="index.html">powrót do strony głównej</a></p>
+    <p><a href="../index.html">powrót do strony głównej</a></p>
     <br>
   </section>
 </body>
