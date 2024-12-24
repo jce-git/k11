@@ -54,6 +54,9 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  max-height: 50vh; /* Set the maximum height to the viewport height */
+  overflow-y: auto; /* Add vertical scrollbar if content overflows */
+
 }
 
 nav a {
@@ -68,8 +71,6 @@ nav a.active {
   background-color: #ffdb3a;
   font-weight: bold;
 }
-
-
 
 /* section settings */
 section {
