@@ -1,8 +1,11 @@
 <!DOCTYPE html>
+<html lang="en"></html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>K11 - Olsztyński Klub Gier Planszowych</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav>
@@ -27,17 +30,14 @@
   <section id="about">
     <h2>O nas</h2>
     <br>
-    <p>Więcej informacji o naszej genezie można znaleźć tutaj</p>
-    <p><a href="about.html">link informujący o powstaniu klubu K11 !</a></p>
-    <br>
     <p>Jesteśmy klubem gier planszowych, który powstał w 2021 roku. Regularnie i aktywnie spotykamy się na gry planszowe.</p>
+    <br>
+    <p>Więcej informacji o klubie K11 można znaleźć tutaj</p>
+    <p><a href="about.html">link informujący o powstaniu klubu K11 !</a></p>
   </section>
 
   <section id="plan-spotkan">
     <h2>Plan spotkań - Grudzień 2024</h2>
-    <br>
-    <p>Więcej informacji o wydarzeniach można znaleźć tutaj</p>
-    <p><a href="events.html">link do szczegółów wydarzeń organizowanych przez K11 !</a></p>
     <br>
     <p>Harmonogram spotkań klubu K11 na grudzień 2024r. :</p>
     <br>
@@ -70,6 +70,8 @@
     <p>Kochamy Planszówki. Wieczór z K11</p>
     <p>w Masoneria Szisza Bar - <a href="https://www.google.com/maps/place/Masoneria+shisha+bar/@53.7760269,20.4699986,17z/data=!3m1!4b1!4m6!3m5!1s0x46e27f1e067b02ef:0xf5f51cdc05767785!8m2!3d53.7760238!4d20.4748641!16s%2Fg%2F11g0hm8247?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D">link do Google Maps !</a></p>
     <br>
+    <p>Więcej informacji o wydarzeniach można znaleźć tutaj:</p>
+    <p><a href="events.html">Link do wydarzeń organizowanych przez K11 !</a></p>
   </section>
 
   <section id="social-media">
@@ -134,11 +136,59 @@
       <img src="images/photos/08.jpg" alt="Image 8" onclick="openModal(this)">
       <img src="images/photos/09.jpg" alt="Image 9" onclick="openModal(this)">
     </div>
-
-    <div id="myModal" class="modal" onclick="closeModal()">
-      <span class="close" onclick="event.stopPropagation(); closeModal()">&times;</span>
-      <img class="modal-content" id="image_preview">
+    
+    <!-- Modal structure -->
+    <div id="myModal" onclick="closeModal()">
+      <span id="prev" class="prev" onclick="event.stopPropagation();">&#10094;</span>
+      <img id="image_preview" src="" alt="Image Preview">
+      <span id="next" class="next" onclick="event.stopPropagation();">&#10095;</span>
+      <span class="close" onclick="closeModal()">&times;</span>
     </div>
+
+    <!-- Code used for photo gallery -->
+    <script>
+      let currentImageIndex = 0;
+      const images = document.querySelectorAll('img'); // Select all images
+
+      function openModal(img) {
+        document.getElementById("myModal").style.display = "flex";
+        document.getElementById("image_preview").src = img.src;
+        currentImageIndex = Array.from(images).indexOf(img); // Get the index of the clicked image
+      }
+
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+
+      function showImage(index) {
+        if (index >= 0 && index < images.length) {
+          document.getElementById("image_preview").src = images[index].src;
+          currentImageIndex = index;
+        }
+      }
+
+      // Add event listener for Escape, Left, and Right keys
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          closeModal();
+        } else if (event.key === "ArrowLeft") {
+          showImage(currentImageIndex - 1);
+        } else if (event.key === "ArrowRight") {
+          showImage(currentImageIndex + 1);
+        }
+      });
+
+      // Add event listeners for prev and next arrows
+      document.getElementById("prev").addEventListener("click", function(event) {
+        event.stopPropagation(); // Prevent modal close
+        showImage(currentImageIndex - 1);
+      });
+
+      document.getElementById("next").addEventListener("click", function(event) {
+        event.stopPropagation(); // Prevent modal close
+        showImage(currentImageIndex + 1);
+      });
+    </script>
   </section>
 
   <section id="biblioteka-gier">
@@ -159,28 +209,15 @@
     <br>
     <img src="images/website_logo.png" alt="website_logo.png">
   </section>
-  
-  <!-- Code used for photo gallery -->
-  <script>
-    
-    function openModal(img) {
-      document.getElementById("myModal").style.display = "block";
-      document.getElementById("image_preview").src = img.src;
-    }
 
-    function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-    }
-     
-  </script>
-
+<!-- Include the scripts.js file -->
+<!-- Doesn't work at the moment --> 
+<!-- <script src="scripts.js"></script>  -->
 </body>
 
 <!-- \\\ Code needed to show facebook timeline \\\ -->
-<div id="fb-root">
-</div>
+<div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0">
-</script>
 </script>
 <!-- /// Code needed to show facebook timeline /// -->
 </html>
