@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>K11 - Olsztyński Klub Gier Planszowych</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#news">Aktualności</a>
+    <a href="#contact">Kontakt</a>
+    <a href="index.html">Powrót do strony głównej</a>
+  </nav>
+
+  <section id="home">
+    <br>
+    <h2>Witamy na podstronie - Aktualności</h2>
+    <br>
+    <p>Olsztyńskiego Klubu Gier Planszowych - K11 !</p>
+    <p><a href="index.html">powrót do strony głównej</a></p>
+    <br>
+    <br>
+    <img src="images/website_logo.png" alt="website_logo.png">
+
+  </section>
+
+  <section id="news">
+    <h2>Aktualności</h2>
+    <br>
+    <!-- p class information can be found in styles.css file -->
+    <p class="date-text">🎄14.12.2024r. (sobota), godz. 10.00 - 14.00</p>
+    <p>Planszówki w Planecie 11. Mikołajkowe granie</p>
+    <br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam lorem. Sed scelerisque nulla sit amet diam condimentum vehicula. Proin tincidunt risus orci, a rutrum orci maximus non. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ultrices malesuada nisl, a malesuada enim consequat non. Aliquam et dui a neque aliquet eleifend ac at turpis. Aliquam erat volutpat. Phasellus blandit accumsan lorem.</p>
+    <br>
+    <h2>Zdjęcia</h2>
+    <br>
+    <div class="photo-gallery">
+        <img src="images/photos/01.jpg" alt="Image 1" onclick="openModal(this)">
+        <img src="images/photos/02.jpg" alt="Image 2" onclick="openModal(this)">
+        <img src="images/photos/03.jpg" alt="Image 3" onclick="openModal(this)">
+        <img src="images/photos/04.jpg" alt="Image 4" onclick="openModal(this)">
+        <img src="images/photos/05.jpg" alt="Image 5" onclick="openModal(this)">
+        <img src="images/photos/06.jpg" alt="Image 6" onclick="openModal(this)">
+        <img src="images/photos/07.jpg" alt="Image 7" onclick="openModal(this)">
+        <img src="images/photos/08.jpg" alt="Image 8" onclick="openModal(this)">
+        <img src="images/photos/09.jpg" alt="Image 9" onclick="openModal(this)">
+    </div>
+    
+    <!-- Modal structure -->
+    <div id="myModal" onclick="closeModal()">
+        <span id="previous_image_button" class="previous_image_button" onclick="event.stopPropagation();">&#10094;</span>
+        <img id="image_preview" src="" alt="Image Preview">
+        <span id="next_image_button" class="next_image_button" onclick="event.stopPropagation();">&#10095;</span>
+        <span class="close_button" onclick="closeModal()">&times;</span>
+    </div>
+
+    <!-- Code used for photo gallery -->
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('img'); // Select all images
+
+        function openModal(img) {
+        document.getElementById("myModal").style.display = "flex";
+        document.getElementById("image_preview").src = img.src;
+        currentImageIndex = Array.from(images).indexOf(img); // Get the index of the clicked image
+        }
+
+        function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+        }
+
+        function showImage(index) {
+        if (index >= 0 && index < images.length) {
+            document.getElementById("image_preview").src = images[index].src;
+            currentImageIndex = index;
+        }
+        }
+
+        // Add event listener for Escape, Left, and Right keys
+        document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            closeModal();
+        } else if (event.key === "ArrowLeft") {
+            showImage(currentImageIndex - 1);
+        } else if (event.key === "ArrowRight") {
+            showImage(currentImageIndex + 1);
+        }
+        });
+
+        // Add event listeners for prev and next arrows
+        document.getElementById("previous_image_button").addEventListener("click", function(event) {
+        event.stopPropagation(); // Prevent modal close
+        showImage(currentImageIndex - 1);
+        });
+
+        document.getElementById("next_image_button").addEventListener("click", function(event) {
+        event.stopPropagation(); // Prevent modal close
+        showImage(currentImageIndex + 1);
+        });
+    </script>
+  </section>
+
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <br>
+    <p>Masz pytanie? Napisz do nas maila ! :</p>
+    <p>Email: <a href="mailto:k11.olsztyn@gmail.com">k11.olsztyn@gmail.com</a></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="images/website_logo.png" alt="website_logo.png">
+    <br>
+    <br>
+    <br>
+    <p><a href="index.html">powrót do strony głównej</a></p>
+    <br>
+  </section>
+</body>
+</html>

@@ -6,22 +6,28 @@ body {
   align-items: center;
   min-height: 100vh;
   /* color of the website background */
-  background-color: #080808;
+  background-color: #121212;
   /* color of the website font (overwritten by code in section block!) */
-  color: #ffe14d;
+  color: #ffdb3a;
 }
+
+
 
 /* header tag settings */
 h2 {
-  color: #050505;
-  background-color: #FFC704; /* Tło w kolorze CMYK ffce04ff (HEX #FFC704) */
+  color: #080808;
+  background-color: #ffdb3a; /* Tło w kolorze CMYK ffce04ff (HEX #FFC704) */
   padding: 8px; /* Opcjonalnie: odstęp między tekstem a krawędzią tła */
   border-radius: 4px; /* Opcjonalnie: zaokrąglenie rogów */
 }
 
+
+
 h3 {
   color: #ffdb3a;
 }
+
+
 
 h4 {
   color: whitesmoke;
@@ -31,13 +37,13 @@ h4 {
 
 /* paragraph tag settings */
 p {
-  font-size: 20px; /* Change this value to your desired font size */
+  font-size: 18px; /* Change this value to your desired font size */
   color: whitesmoke;
 }
 
 /* paragraph classes*/
 .date-text {
-  font-size: 20px; /* Change this value to your desired font size */
+  font-size: 18px; /* Change this value to your desired font size */
   color: #ffdb3a;
 }
 
@@ -45,11 +51,11 @@ p {
 
 /* navigation bar settings */
 nav {
-  font-size: 18px;
+  font-size: 16px;
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #181818;
+  background-color: #242424;
   max-height: 100vh; /* Set the maximum height to the viewport height */
   overflow-x: auto; /* Add horizontal scrollbar if content overflows */
   display: flex;
@@ -64,12 +70,20 @@ nav a {
   padding: 14px 16px;
   text-decoration: none;
   margin: 0 5px;
+  border-top: 2px solid transparent; /* Add transparent border */
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffdb3a;
+  border-top: 2px solid #ffdb3a; /* Change border color on hover */
 }
 
 nav a.active {
   color: #000;
   background-color: #ffdb3a;
   font-weight: bold;
+  border-top: 2px solid #ffdb3a; /* Ensure active state has the same border */
 }
 
 /* Center the navigation items */
@@ -87,7 +101,7 @@ section {
   padding: 50px;
   width: 80%;
   max-width: 600px;
-  color: #ffe14d;
+  color: #ffdb3a;
 }
 
 
@@ -103,14 +117,15 @@ section {
 .photo-gallery img {
   max-width: 100%;
   height: auto;
-  border: 5px solid #ffe14d;
+  border: 5px solid #ffdb3a;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 .photo-gallery img:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) rotate(3deg);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0);
 }
 
 .modal {
@@ -139,6 +154,8 @@ section {
   max-width: 700px;
 }
 
+
+
 /* Modal container */
 #myModal {
   display: none;
@@ -154,22 +171,27 @@ section {
   align-items: center; /* Center vertically */
 }
 
+
+
 /* Image preview */
 #image_preview {
   margin: auto;
   display: block;
-  max-width: 80%;
-  max-height: 80%;
+  /* Maximum width and height of previewed image */
+  max-width: 90%;
+  max-height: 90%;
 }
 
+
+
 /* Navigation arrows */
-.prev, .next {
+.previous_image_button, .next_image_button {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  bottom: 5%;
   width: auto;
   padding: 16px;
-  margin-top: -22px;
+  margin-top: 22px;
   color: white;
   font-weight: bold;
   font-size: 40px;
@@ -177,22 +199,25 @@ section {
   user-select: none;
 }
 
-.prev {
+.previous_image_button {
   left: 40px; /* Move 40px away from the left edge */
 }
 
-.next {
+.next_image_button {
   right: 40px; /* Move 40px away from the right edge */
 }
 
-.prev:hover, .next:hover {
+.previous_image_button:hover, .next_image_button:hover {
+  color: #ffdb3a;
   background-color: rgba(0,0,0,0.8);
 }
 
+
+
 /* Close button */
-.close {
+.close_button {
   position: absolute;
-  top: 15px;
+  top: 5%;
   right: 50px; /* Adjusted to align with the next button */
   color: white;
   font-size: 50px;
@@ -201,8 +226,8 @@ section {
   cursor: pointer;
 }
 
-.close:hover, .close:focus {
-  color: red;
+.close_button:hover, .close_button:focus {
+  color: #ffdb3a;
   text-decoration: none;
   cursor: pointer;
 }

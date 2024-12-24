@@ -20,7 +20,7 @@
 
   <section id="home">
     <br>
-    <h2>Witamy na stronie</h2>
+    <h2>Witamy na stronie głównej</h2>
     <br>
     <p>Olsztyńskiego Klubu Gier Planszowych - K11 !</p>
     <br>
@@ -140,10 +140,10 @@
     
     <!-- Modal structure -->
     <div id="myModal" onclick="closeModal()">
-      <span id="prev" class="prev" onclick="event.stopPropagation();">&#10094;</span>
+      <span id="previous_image_button" class="previous_image_button" onclick="event.stopPropagation();">&#10094;</span>
       <img id="image_preview" src="" alt="Image Preview">
-      <span id="next" class="next" onclick="event.stopPropagation();">&#10095;</span>
-      <span class="close" onclick="closeModal()">&times;</span>
+      <span id="next_image_button" class="next_image_button" onclick="event.stopPropagation();">&#10095;</span>
+      <span class="close_button" onclick="closeModal()">&times;</span>
     </div>
 
     <!-- Code used for photo gallery -->
@@ -180,12 +180,12 @@
       });
 
       // Add event listeners for prev and next arrows
-      document.getElementById("prev").addEventListener("click", function(event) {
+      document.getElementById("previous_image_button").addEventListener("click", function(event) {
         event.stopPropagation(); // Prevent modal close
         showImage(currentImageIndex - 1);
       });
 
-      document.getElementById("next").addEventListener("click", function(event) {
+      document.getElementById("next_image_button").addEventListener("click", function(event) {
         event.stopPropagation(); // Prevent modal close
         showImage(currentImageIndex + 1);
       });
