@@ -50,13 +50,13 @@ nav {
   top: 0;
   width: 100%;
   background-color: #181818;
+  max-height: 100vh; /* Set the maximum height to the viewport height */
+  overflow-x: auto; /* Add horizontal scrollbar if content overflows */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; /* Align items to the start */
+  flex-direction: row; /* Stack items horizontally */
+  align-items: center; /* Center items vertically */
   padding: 0 20px;
-  max-height: 50vh; /* Set the maximum height to the viewport height */
-  overflow-y: auto; /* Add vertical scrollbar if content overflows */
-
 }
 
 nav a {
@@ -71,6 +71,15 @@ nav a.active {
   background-color: #ffdb3a;
   font-weight: bold;
 }
+
+/* Center the navigation items */
+nav::before,
+nav::after {
+  content: '';
+  flex: 1;
+}
+
+
 
 /* section settings */
 section {
