@@ -209,7 +209,7 @@ section {
 .previous_image_button, .next_image_button {
   cursor: pointer;
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
   width: auto;
   padding: 16px;
   margin-top: 22px;
@@ -221,11 +221,11 @@ section {
 }
 
 .previous_image_button {
-  left: 40px; /* Move 40px away from the left edge */
+  left: 10%;
 }
 
 .next_image_button {
-  right: 40px; /* Move 40px away from the right edge */
+  right: 10%;
 }
 
 .previous_image_button:hover, .next_image_button:hover {
@@ -238,8 +238,8 @@ section {
 /* Close button */
 .close_button {
   position: absolute;
-  top: 5%;
-  right: 50px; /* Adjusted to align with the next button */
+  top: 10%;
+  right:  10%;
   color: white;
   font-size: 50px;
   font-weight: bold;
