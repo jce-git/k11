@@ -43,8 +43,8 @@ p {
 }
 
 /* paragraph classes*/
-.date-text {
-  font-size: 18px; /* Change this value to your desired font size */
+.paragraph-header-01 {
+  font-size: 19px; /* Change this value to your desired font size */
   color: #ffdb3a;
 }
 
@@ -238,7 +238,7 @@ section {
 /* Close button */
 .close_button {
   position: absolute;
-  top: 10%;
+  top: 20%;
   right:  10%;
   color: white;
   font-size: 50px;

@@ -1,0 +1,1 @@
+TODO: fix gallery code in news_template.html
