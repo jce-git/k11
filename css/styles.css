@@ -1,11 +1,11 @@
 /* CSS Reset */
 /* This helps to ensure consistency across different browsers. */
-* {
+/** {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+*/
 
 
 /* This example adjusts the font sizes and padding for screens that are 768 pixels wide or smaller. 
