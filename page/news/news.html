@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
-<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,5 +71,12 @@
     <p><a href="../../index.html" class="button-link">powrót do strony głównej</a></p>
     <br>
   </section>
+  <!-- footer is made dynamically with the help of variable.js and template.js javascript code -->
+  <footer>
+    <p>&copy; <span id="publish-year-from"></span> - <span id="current-year"></span> <span id="site-title"></span></p>
+  </footer>
+  <!-- order how we load files is important ! we have to load variables.js file first and then template.js file ! -->
+  <script src="../../scripts/variables.js"></script>
+  <script src="../../scripts/template.js"></script>
 </body>
 </html>

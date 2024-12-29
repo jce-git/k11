@@ -1,10 +1,21 @@
+/* CSS Reset */
+/* This helps to ensure consistency across different browsers. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
   /* color of the website background */
   background-color: #121212;
   /* color of the website font (overwritten by code in section block!) */
