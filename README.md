@@ -1,3 +1,3 @@
-Website of K11 club
+Website of K11 board game club
 
-TODO: fix gallery code in news_template.html
+TODO: Add python tool to convert text to html news code
