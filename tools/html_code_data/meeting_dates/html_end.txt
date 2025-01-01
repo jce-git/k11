@@ -1,0 +1,42 @@
+<p>Więcej informacji o wydarzeniach można znaleźć tutaj:</p>
+<p><a href="../events/events.html" class="button-link">Czytaj więcej</a></p>
+
+<!-- Modal structure -->
+<div id="myModal" onclick="closeModal()">
+    <span id="previous_image_button" class="previous_image_button" onclick="event.stopPropagation();">&#10094;</span>
+    <img id="image_preview" src="" alt="Image Preview">
+    <span id="next_image_button" class="next_image_button" onclick="event.stopPropagation();">&#10095;</span>
+    <span class="close_button" onclick="closeModal()">&times;</span>
+</div>
+
+<!-- Link to external news_gallery_script.js file -->
+<script src="../../scripts/news_gallery.js"></script>
+</section>
+
+<section id="contact">
+    <h2>Kontakt</h2>
+    <br>
+    <p>Masz pytanie? Napisz do nas maila ! :</p>
+    <p>Email: <a href="mailto:k11.olsztyn@gmail.com">k11.olsztyn@gmail.com</a></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="../../images/website_logo.png" alt="../../website_logo.png">
+    <br>
+    <br>
+    <br>
+    <p><a href="news.html" class="button-link">powrót do listy aktualności</a></p>
+    <p><a href="../../index.html" class="button-link">powrót do strony głównej</a></p>
+    <br>
+</section>
+
+<!-- footer is made dynamically with the help of variable.js and template.js javascript code -->
+<footer>
+    <p>&copy; <span id="publish-year-from"></span> - <span id="current-year"></span> <span id="site-title"></span></p>
+</footer>
+<!-- order how we load files is important ! we have to load variables.js file first and then template.js file ! -->
+<script src="../../scripts/variables.js"></script>
+<script src="../../scripts/template.js"></script>
+</body>
+</html>

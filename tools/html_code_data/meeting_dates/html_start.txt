@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+</head>
+<body>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#news">Aktualności</a>
+    <a href="#contact">Kontakt</a>
+    <a href="../../index.html">Powrót do strony głównej</a>
+  </nav>
+
+  <section id="home">
+    <br>
+    <h2>Witamy na podstronie - Aktualności</h2>
+    <br>
+    <p>Olsztyńskiego Klubu Gier Planszowych - K11 !</p>
+    <p><a href="news.html" class="button-link">powrót do listy aktualności</a></p>
+    <p><a href="../../index.html" class="button-link">powrót do strony głównej</a></p>
+    <br>
+    <br>
+    <img src="../../images/website_logo.png" alt="../../website_logo.png">
+  </section>
+
+  <section id="news">
+    <h2>Plan spotkań - Styczeń 2025</h2>
+    <br>
+    <p>Harmonogram spotkań klubu K11 na styczeń 2025r.:</p>
+    <br>
+    <!-- p class information can be found in styles.css file -->
