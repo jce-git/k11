@@ -71,6 +71,7 @@ with open(output_filename, 'w', encoding='utf-8') as file:
 
 # Move the file to ../page/news folder
 destination_folder = '../page/news/'
+
 if not os.path.exists(destination_folder):
     os.makedirs(destination_folder)
 shutil.move(output_filename, os.path.join(destination_folder, output_filename))
@@ -83,7 +84,7 @@ polish_months = {
 
 # Dynamically create the link and add it to news_html_page_replace
 month_name = polish_months[month]
-news_html_page_replace = f'<p><a href="{output_filename}" class="button-link">{day:02d}.{month:02d}.{year} Plan spotkań - {month_name} {year}</a></p>\n'
+news_html_page_replace = f'\n    <p><a href="{output_filename}" class="button-link">{day:02d}.{month:02d}.{year} Plan spotkań - {month_name} {year}</a></p>\n'
 
 # Copy news.html_page_replace.txt to current working directory and rename it to news.html
 source_file = f'{path_to_data}news.html_page_replace.txt'
@@ -109,17 +110,27 @@ source_path = '../page/news/news.html'
 with open(source_path, 'r', encoding='utf-8') as file:
     source_content = file.readlines()
 
-# Find missing lines
-missing_lines = [line for line in source_content if line not in copied_content]
+# Create a set of copied content for faster lookup
+copied_content_set = set(copied_content)
+# print(copied_content_set)
 
-# Remove the first line from missing_lines list if it starts with '<br>'
-if '<br>' in missing_lines [0]:
-    missing_lines.pop(0)
-
-# Append missing lines to the copied file
-if missing_lines:
-    with open(copied_file, 'a', encoding='utf-8') as file:
-        file.writelines(missing_lines)
+# Find and append missing lines from source to copied file
+with open(copied_file, 'a', encoding='utf-8') as file:
+    first_br_line = False
+    for line in source_content:
+        if line not in copied_content_set:
+            # print("copied line:\t", line)
+            file.write(line)
+        elif line == "    <br>\n":
+            if first_br_line == False:
+                first_br_line = True
+                print(True)
+            else:
+                # print("copied line:\t", line)
+                file.write(line)
+        else:
+            # print("not copied line:\t", line)
+            pass
 
 # Rename the source (original) file to news_backup.html and move the copied_file
 backup_path = os.path.join(destination_folder, 'news_backup.html')

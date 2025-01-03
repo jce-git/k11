@@ -15,5 +15,6 @@
   </nav>
 
   <section id="news">
+    <br>
     <h2>Aktualności - Lista</h2>
     <br>
