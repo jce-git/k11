@@ -8,32 +8,28 @@ path_to_data = "html_code_data/meeting_dates/"
 # variable that is responsible for the first part of the name of the file that will be created
 beginning_of_file_name = "news"
 
-# Check if html_start.txt exists, if not create an empty file
-if not os.path.exists(f'{path_to_data}html_start.txt'):
-    with open(f'{path_to_data}html_start.txt', 'w', encoding='utf-8') as file:
-        file.write('')
+# List of .txt files to check and read with optional custom paths
+txt_files = {
+    'html_start.txt': path_to_data,
+    # '' stands for the current directory where the script is located
+    'text_to_convert.txt': '',
+    'html_end.txt': path_to_data,
+    'news.html_page_replace.txt': path_to_data
+}
 
-# Read HTML template from html_start.txt
-with open(f'{path_to_data}html_start.txt', 'r', encoding='utf-8') as file:
-    html_start = file.read()
+# Function to read file content or create an empty file if it doesn't exist
+def read_or_create_file(file_path):
+    if not os.path.exists(file_path):
+        print(f"File {file_path} does not exist. Creating an empty file...")
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write('')
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
 
-# Check if text_to_convert.txt exists, if not create an empty file
-if not os.path.exists('text_to_convert.txt'):
-    with open('text_to_convert.txt', 'w', encoding='utf-8') as file:
-        file.write('')
-
-# Read input from text_to_convert.txt
-with open('text_to_convert.txt', 'r', encoding='utf-8') as file:
-    text_to_convert = file.read()
-
-# Check if html_end.txt exists, if not create an empty file
-if not os.path.exists(f'{path_to_data}html_end.txt'):
-    with open(f'{path_to_data}html_end.txt', 'w', encoding='utf-8') as file:
-        file.write('')
-
-# Read input from html_end.txt
-with open(f'{path_to_data}html_end.txt', 'r', encoding='utf-8') as file:
-    html_end = file.read()
+# Access the contents of each file
+html_start, text_to_convert, html_end, news_html_page_replace = [
+    read_or_create_file(f'{path}{file}') for file, path in txt_files.items()
+]
 
 # Mapping of locations to Google Maps links
 location_links = {
@@ -53,7 +49,7 @@ def generate_html(event):
     """
 
 # Parse the input text
-events = re.findall(r"⛄️(\d{2}\.\d{2}\.\d{4}r\.) \((.*?)\) (.*?) - (.*?), godz\. (.*?)$", text_to_convert, re.MULTILINE)
+events = re.findall(r"(\d{2}\.\d{2}\.\d{4}r\.) \((.*?)\) (.*?) - (.*?), godz\. (.*?)$", text_to_convert, re.MULTILINE)
 
 # Create output filename based on current date
 today = datetime.date.today()
@@ -74,9 +70,63 @@ with open(output_filename, 'w', encoding='utf-8') as file:
     file.write(html_output)
 
 # Move the file to ../page/news folder
-destination_folder = '../page/news'
+destination_folder = '../page/news/'
 if not os.path.exists(destination_folder):
     os.makedirs(destination_folder)
 shutil.move(output_filename, os.path.join(destination_folder, output_filename))
+
+# Mapping of month numbers to Polish month names
+polish_months = {
+    1: "Styczeń", 2: "Luty", 3: "Marzec", 4: "Kwiecień", 5: "Maj", 6: "Czerwiec",
+    7: "Lipiec", 8: "Sierpień", 9: "Wrzesień", 10: "Październik", 11: "Listopad", 12: "Grudzień"
+}
+
+# Dynamically create the link and add it to news_html_page_replace
+month_name = polish_months[month]
+news_html_page_replace = f'<p><a href="{output_filename}" class="button-link">{day:02d}.{month:02d}.{year} Plan spotkań - {month_name} {year}</a></p>\n'
+
+# Copy news.html_page_replace.txt to current working directory and rename it to news.html
+source_file = f'{path_to_data}news.html_page_replace.txt'
+copied_file = 'news.html'
+shutil.copy(source_file, copied_file)
+
+# Read the contents of copied file
+with open(copied_file, 'r', encoding='utf-8') as file:
+    copied_content = file.readlines()
+
+# Write the updated news_html_page_replace back to the file
+with open(copied_file, 'a', encoding='utf-8') as file:
+    file.write(news_html_page_replace)
+    #print(news_html_page_replace)
+
+# Read the updated contents of copied file
+with open(copied_file, 'r', encoding='utf-8') as file:
+    copied_content = file.readlines()
+
+source_path = '../page/news/news.html'
+
+# Read the source news.html file that will be compared with the copied file
+with open(source_path, 'r', encoding='utf-8') as file:
+    source_content = file.readlines()
+
+# Find missing lines
+missing_lines = [line for line in source_content if line not in copied_content]
+
+# Remove the first line from missing_lines list if it starts with '<br>'
+if '<br>' in missing_lines [0]:
+    missing_lines.pop(0)
+
+# Append missing lines to the copied file
+if missing_lines:
+    with open(copied_file, 'a', encoding='utf-8') as file:
+        file.writelines(missing_lines)
+
+# Rename the source (original) file to news_backup.html and move the copied_file
+backup_path = os.path.join(destination_folder, 'news_backup.html')
+if os.path.exists(backup_path):
+    os.remove(backup_path)
+os.rename(source_path, backup_path)
+shutil.move(copied_file, source_path)
+
 # Wait for user to press Enter
 input("Press Enter to exit...")
