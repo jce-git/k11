@@ -3,6 +3,8 @@ import os
 import datetime
 import shutil
 
+# CREATING NEW  news_year.month.day.html FILE
+
 path_to_data = "html_code_data/meeting_dates/"
 
 # variable that is responsible for the first part of the name of the file that will be created
@@ -76,6 +78,8 @@ if not os.path.exists(destination_folder):
     os.makedirs(destination_folder)
 shutil.move(output_filename, os.path.join(destination_folder, output_filename))
 
+# MODIFYING news.html FILE
+
 # Mapping of month numbers to Polish month names
 polish_months = {
     1: "Styczeń", 2: "Luty", 3: "Marzec", 4: "Kwiecień", 5: "Maj", 6: "Czerwiec",
@@ -124,7 +128,7 @@ with open(copied_file, 'a', encoding='utf-8') as file:
         elif line == "    <br>\n":
             if first_br_line == False:
                 first_br_line = True
-                print(True)
+                # print(True)
             else:
                 # print("copied line:\t", line)
                 file.write(line)
@@ -138,6 +142,22 @@ if os.path.exists(backup_path):
     os.remove(backup_path)
 os.rename(source_path, backup_path)
 shutil.move(copied_file, source_path)
+
+# MODIFYING index.html FILE
+
+# Read the index.html file
+index_path = '../index.html'
+with open(index_path, 'r', encoding='utf-8') as file:
+    index_content = file.read()
+
+# Replace the old link with the new one
+new_link = f'<a href="{output_filename}" class="button-link">Czytaj więcej</a>'
+index_content = re.sub(r'<a href="page/news/news_\d{4}\.\d{2}\.\d{2}\.html" class="button-link">Czytaj więcej</a>', new_link, index_content)
+
+# Write the updated content back to index.html
+with open(index_path, 'w', encoding='utf-8') as file:
+    file.write(index_content)
+
 
 # Wait for user to press Enter
 input("Press Enter to exit...")
