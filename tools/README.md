@@ -5,7 +5,6 @@ How to use text_to_html-meeting_dates.py tool.py
 What are additional files used for in html_code_data\meeting_dates
 - html_start.txt is html_code used for the beginning of the new html page
 - html_end.txt is html code used for the final part of the new html page
-- news.html_page_replace is html_code used for the modifying of the news.html page
 
 - text_to_convert.txt is text that will be modified to html code
 

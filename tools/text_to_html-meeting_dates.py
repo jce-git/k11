@@ -3,12 +3,13 @@ import os
 import datetime
 import shutil
 
+script_name = 'text_to_html-meeting_dates.py'
+path_to_data = 'html_code_data/meeting_dates/'
+
 # CREATING NEW  news_year.month.day.html FILE
 
-path_to_data = "html_code_data/meeting_dates/"
-
 # variable that is responsible for the first part of the name of the file that will be created
-beginning_of_file_name = "news"
+beginning_of_new_file_name = "news_"
 
 # List of .txt files to check and read with optional custom paths
 txt_files = {
@@ -16,7 +17,6 @@ txt_files = {
     # '' stands for the current directory where the script is located
     'text_to_convert.txt': '',
     'html_end.txt': path_to_data,
-    'news.html_page_replace.txt': path_to_data
 }
 
 # Function to read file content or create an empty file if it doesn't exist
@@ -29,7 +29,7 @@ def read_or_create_file(file_path):
         return file.read()
 
 # Access the contents of each file
-html_start, text_to_convert, html_end, news_html_page_replace = [
+html_start, text_to_convert, html_end = [
     read_or_create_file(f'{path}{file}') for file, path in txt_files.items()
 ]
 
@@ -56,7 +56,7 @@ events = re.findall(r"(\d{2}\.\d{2}\.\d{4}r\.) \((.*?)\) (.*?) - (.*?), godz\. (
 # Create output filename based on current date
 today = datetime.date.today()
 year, month, day = today.year, today.month, today.day
-output_filename = f"{beginning_of_file_name}_{year:04d}.{month:02d}.{day:02d}.html"
+output_filename = f"{beginning_of_new_file_name}{year:04d}.{month:02d}.{day:02d}.html"
 
 # Add beginning of HTML code from html_start.txt to html_output
 html_output = html_start
@@ -86,62 +86,22 @@ polish_months = {
     7: "Lipiec", 8: "Sierpień", 9: "Wrzesień", 10: "Październik", 11: "Listopad", 12: "Grudzień"
 }
 
-# Dynamically create the link and add it to news_html_page_replace
+# Dynamically create the link
 month_name = polish_months[month]
-news_html_page_replace = f'\n    <p><a href="{output_filename}" class="button-link">{day:02d}.{month:02d}.{year} Plan spotkań - {month_name} {year}</a></p>\n'
+new_news_link = f'    <p><a href="{output_filename}" class="button-link">{day:02d}.{month:02d}.{year} Plan spotkań - {month_name} {year}</a></p>'
 
-# Copy news.html_page_replace.txt to current working directory and rename it to news.html
-source_file = f'{path_to_data}news.html_page_replace.txt'
-copied_file = 'news.html'
-shutil.copy(source_file, copied_file)
+# Read the news.html file
+news_path = '../page/news/news.html'
+with open(news_path, 'r', encoding='utf-8') as file:
+    news_content = file.read()
 
-# Read the contents of copied file
-with open(copied_file, 'r', encoding='utf-8') as file:
-    copied_content = file.readlines()
+# Insert the new link after the specified part of the code
+insert_after = '<section id="news">\n    <br>\n    <h2>Aktualności - Lista</h2>\n    <br>'
+news_content = news_content.replace(insert_after, f'{insert_after}\n{new_news_link}', 1)
 
-# Write the updated news_html_page_replace back to the file
-with open(copied_file, 'a', encoding='utf-8') as file:
-    file.write(news_html_page_replace)
-    #print(news_html_page_replace)
-
-# Read the updated contents of copied file
-with open(copied_file, 'r', encoding='utf-8') as file:
-    copied_content = file.readlines()
-
-source_path = '../page/news/news.html'
-
-# Read the source news.html file that will be compared with the copied file
-with open(source_path, 'r', encoding='utf-8') as file:
-    source_content = file.readlines()
-
-# Create a set of copied content for faster lookup
-copied_content_set = set(copied_content)
-# print(copied_content_set)
-
-# Find and append missing lines from source to copied file
-with open(copied_file, 'a', encoding='utf-8') as file:
-    first_br_line = False
-    for line in source_content:
-        if line not in copied_content_set:
-            # print("copied line:\t", line)
-            file.write(line)
-        elif line == "    <br>\n":
-            if first_br_line == False:
-                first_br_line = True
-                # print(True)
-            else:
-                # print("copied line:\t", line)
-                file.write(line)
-        else:
-            # print("not copied line:\t", line)
-            pass
-
-# Rename the source (original) file to news_backup.html and move the copied_file
-backup_path = os.path.join(destination_folder, 'news_backup.html')
-if os.path.exists(backup_path):
-    os.remove(backup_path)
-os.rename(source_path, backup_path)
-shutil.move(copied_file, source_path)
+# Write the updated content back to news.html
+with open(news_path, 'w', encoding='utf-8') as file:
+    file.write(news_content)
 
 # MODIFYING index.html FILE
 
@@ -151,13 +111,13 @@ with open(index_path, 'r', encoding='utf-8') as file:
     index_content = file.read()
 
 # Replace the old link with the new one
-new_link = f'<a href="{output_filename}" class="button-link">Czytaj więcej</a>'
+new_link = f'<a href="page/news/{output_filename}" class="button-link">Czytaj więcej</a>'
 index_content = re.sub(r'<a href="page/news/news_\d{4}\.\d{2}\.\d{2}\.html" class="button-link">Czytaj więcej</a>', new_link, index_content)
 
 # Write the updated content back to index.html
 with open(index_path, 'w', encoding='utf-8') as file:
     file.write(index_content)
 
-
+print(f"{script_name} has finished running.")
 # Wait for user to press Enter
 input("Press Enter to exit...")

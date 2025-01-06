@@ -25,10 +25,3 @@
     <br>
     <img src="../../images/website_logo.png" alt="../../website_logo.png">
   </section>
-
-  <section id="news">
-    <h2>Plan spotkań - Styczeń 2025</h2>
-    <br>
-    <p>Harmonogram spotkań klubu K11 na styczeń 2025r.:</p>
-    <br>
-    <!-- p class information can be found in styles.css file -->
