@@ -33,7 +33,28 @@ html_start, text_to_convert, html_end = [
     read_or_create_file(f'{path}{file}') for file, path in txt_files.items()
 ]
 
-# Mapping of locations to Google Maps links
+# Create output filename based on current date
+today = datetime.date.today()
+year, month, day = today.year, today.month, today.day
+output_filename = f"{beginning_of_new_file_name}{year:04d}.{month:02d}.{day:02d}.html"
+
+# Add beginning of HTML code from html_start.txt to html_output
+html_output = html_start
+
+# Mapping of month numbers to Polish month names
+polish_months = {
+    1: "Styczeń", 2: "Luty", 3: "Marzec", 4: "Kwiecień", 5: "Maj", 6: "Czerwiec",
+    7: "Lipiec", 8: "Sierpień", 9: "Wrzesień", 10: "Październik", 11: "Listopad", 12: "Grudzień"
+}
+
+# Dynamically create the <h2> tag
+month_name = polish_months[month]
+new_h2_tag = f'<section id="news">\n    <h2>Plan spotkań - {month_name} {year}</h2>\n    <br>\n    <p>Harmonogram spotkań klubu K11 na {month_name.lower()} {year}r.:</p>\n    <br>\n    <!-- p class information can be found in styles.css file -->\n'
+
+# Insert the new <h2> tag into the HTML output
+html_output += new_h2_tag
+
+# Mapping of locations to Google Maps links for later use in dynamically generated HTML
 location_links = {
     "Masoneria Szisza Bar": "https://www.google.com/maps/place/Masoneria+shisha+bar/@53.7760269,20.4699986,17z/data=!3m1!4b1!4m6!3m5!1s0x46e27f1e067b02ef:0xf5f51cdc05767785!8m2!3d53.7760238!4d20.4748641!16s%2Fg%2F11g0hm8247?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D",
     "Świetlica Rady Osiedla Dajtki, ul. Żytnia 71": "https://www.google.com/maps/place/%C5%BBytnia+71,+11-041+Olsztyn/@53.7647175,20.4262845,17.29z/data=!4m6!3m5!1s0x46e27f1111041ed5:0xb840e3620f3c52c4!8m2!3d53.7649399!4d20.4293494!16s%2Fg%2F11b8v4hpzl?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
@@ -52,14 +73,6 @@ def generate_html(event):
 
 # Parse the input text
 events = re.findall(r"(\d{2}\.\d{2}\.\d{4}r\.) \((.*?)\) (.*?) - (.*?), godz\. (.*?)$", text_to_convert, re.MULTILINE)
-
-# Create output filename based on current date
-today = datetime.date.today()
-year, month, day = today.year, today.month, today.day
-output_filename = f"{beginning_of_new_file_name}{year:04d}.{month:02d}.{day:02d}.html"
-
-# Add beginning of HTML code from html_start.txt to html_output
-html_output = html_start
 
 for event in events:
     html_output += generate_html(event)
@@ -80,14 +93,7 @@ shutil.move(output_filename, os.path.join(destination_folder, output_filename))
 
 # MODIFYING news.html FILE
 
-# Mapping of month numbers to Polish month names
-polish_months = {
-    1: "Styczeń", 2: "Luty", 3: "Marzec", 4: "Kwiecień", 5: "Maj", 6: "Czerwiec",
-    7: "Lipiec", 8: "Sierpień", 9: "Wrzesień", 10: "Październik", 11: "Listopad", 12: "Grudzień"
-}
-
-# Dynamically create the link
-month_name = polish_months[month]
+# Dynamically create the link (we use month_name from polish_months dictionary)
 new_news_link = f'    <p><a href="{output_filename}" class="button-link">{day:02d}.{month:02d}.{year} Plan spotkań - {month_name} {year}</a></p>'
 
 # Read the news.html file
