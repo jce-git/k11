@@ -1,0 +1,44 @@
+/* navigation bar settings */
+nav {
+    font-size: 16px;
+    position: fixed; /* or absolute, depending on your layout */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* A high value to ensure it is above other elements */
+    background-color: #242424;
+    max-height: 100vh; /* Set the maximum height to the viewport height */
+    overflow-x: auto; /* Add horizontal scrollbar if content overflows */
+    display: flex;
+    justify-content: flex-start; /* Align items to the start */
+    flex-direction: row; /* Stack items horizontally */
+    align-items: center; /* Center items vertically */
+    padding: 0 20px;
+  }
+  
+  nav a {
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 0 5px;
+    border-top: 2px solid transparent; /* Add transparent border */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #ffdb3a;
+    border-bottom: 2px solid #ffdb3a; /* Change border color on hover */
+  }
+  
+  nav a.active {
+    color: #000;
+    background-color: #ffdb3a;
+    font-weight: bold;
+    border-bottom: 2px solid #ffdb3a; /* Ensure active state has the same border */
+  }
+  
+  /* Center the navigation items */
+  nav::before,
+  nav::after {
+    content: '';
+    flex: 1;
+  }

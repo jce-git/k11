@@ -1,0 +1,70 @@
+/* This example adjusts the font sizes and padding for screens that are 768 pixels wide or smaller. 
+You can add more styles within the media query to further customize the appearance for mobile devices. */
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    body {
+      font-size: 16px;
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 18px;
+      padding: 6px;
+    }
+  
+    h3 {
+      font-size: 16px;
+    }
+  
+    h4 {
+      font-size: 14px;
+    }
+  
+    nav {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      background-color: #242424;
+      position: absolute;
+      top: 50px; /* Adjust based on your header height */
+      left: 0;
+      z-index: 1001; /* Ensure it is above the menu button */
+    }
+  
+    nav a {
+      padding: 10px;
+      width: 100%;
+      text-align: left;
+    }
+  
+    /* nav menu button is only used if window is narrower than 768 pixels */
+    .nav-menu-button-for-narrow-screen {
+      display: block;
+      background-color: #242424;
+      color: #f2f2f2;
+      padding: 18px; /* Increase padding to make the button taller */
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      width: 100%;
+      text-align: left;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000; /* Ensure it is below the nav menu */
+    }
+  
+    section {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .photo-gallery, .news-photo-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .photo-gallery img, .news-photo-gallery img {
+      width: 100%;
+    }
+  }

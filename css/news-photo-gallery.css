@@ -1,0 +1,21 @@
+/* news photo gallery settings */
+.news-photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+  }
+  
+  .news-photo-gallery img {
+    max-width: 100%;
+    height: auto;
+    border: 5px solid #ffdb3a;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .news-photo-gallery img:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0);
+  }
