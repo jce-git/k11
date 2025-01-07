@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <nav>
+  <button class="nav-menu-button-for-narrow-screen" onclick="toggleMenu()">Menu</button>
+  <nav id="nav-menu">
     <a href="#home" class="active">Home</a>
     <a href="#about">O nas</a>
     <a href="#news">Aktualności</a>
@@ -120,5 +121,6 @@
   <!-- order how we load files is important ! we have to load variables.js file first and then template.js file ! -->
   <script src="scripts/variables.js"></script>
   <script src="scripts/template.js"></script>
+  <script src="scripts/nav_menu_button_for_narrow_screen.js"></script>
 </body>
 </html>

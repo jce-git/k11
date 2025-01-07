@@ -37,14 +37,38 @@ You can add more styles within the media query to further customize the appearan
   }
 
   nav {
+    display: none;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    background-color: #242424;
+    position: absolute;
+    top: 50px; /* Adjust based on your header height */
+    left: 0;
+    z-index: 1000;
   }
 
   nav a {
     padding: 10px;
     width: 100%;
     text-align: left;
+  }
+
+  /* nav menu button is only used if window is narrower than 768 pixels */
+  .nav-menu-button-for-narrow-screen {
+    display: block;
+    background-color: #242424;
+    color: #f2f2f2;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001; /* Ensure it is above the nav menu */
   }
 
   section {
@@ -61,7 +85,24 @@ You can add more styles within the media query to further customize the appearan
   }
 }
 
+/* Media Queries for screens larger than 768px */
+@media (min-width: 769px) {
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
+  nav a {
+    padding: 14px 16px;
+    width: auto;
+    text-align: center;
+  }
+
+  .nav-menu-button-for-narrow-screen {
+    display: none;
+  }
+}
 
 body {
   font-family: 'Trebuchet MS', sans-serif;
@@ -79,8 +120,6 @@ body {
   color: #ffdb3a;
 }
 
-
-
 /* header tag settings */
 h2 {
   font-size: 21px;
@@ -90,19 +129,13 @@ h2 {
   border-radius: 4px; /* Opcjonalnie: zaokrąglenie rogów */
 }
 
-
-
 h3 {
   color: #ffdb3a;
 }
 
-
-
 h4 {
   color: whitesmoke;
 }
-
-
 
 /* paragraph tag settings */
 p {
@@ -115,8 +148,6 @@ p {
   font-size: 19px; /* Change this value to your desired font size */
   color: #ffdb3a;
 }
-
-
 
 /* navigation bar settings */
 nav {
@@ -146,14 +177,14 @@ nav a {
 
 nav a:hover {
   color: #ffdb3a;
-  border-top: 2px solid #ffdb3a; /* Change border color on hover */
+  border-bottom: 2px solid #ffdb3a; /* Change border color on hover */
 }
 
 nav a.active {
   color: #000;
   background-color: #ffdb3a;
   font-weight: bold;
-  border-top: 2px solid #ffdb3a; /* Ensure active state has the same border */
+  border-bottom: 2px solid #ffdb3a; /* Ensure active state has the same border */
 }
 
 /* Center the navigation items */
@@ -163,8 +194,6 @@ nav::after {
   flex: 1;
 }
 
-
-
 /* section settings */
 section {
   text-align: center;
@@ -173,8 +202,6 @@ section {
   max-width: 600px;
   color: #ffdb3a;
 }
-
-
 
 /* button that is used for links */
 .button-link {
@@ -192,8 +219,6 @@ section {
 .button-link:hover {
   background-color: #0056b3;
 }
-
-
 
 /* photo gallery settings */
 .photo-gallery {
@@ -244,8 +269,6 @@ section {
   max-width: 700px;
 }
 
-
-
 /* Modal container */
 #myModal {
   display: none;
@@ -261,8 +284,6 @@ section {
   align-items: center; /* Center vertically */
 }
 
-
-
 /* Image preview */
 #image_preview {
   margin: auto;
@@ -271,8 +292,6 @@ section {
   max-width: 90%;
   max-height: 90%;
 }
-
-
 
 /* Navigation arrows */
 .previous_image_button, .next_image_button {
@@ -302,8 +321,6 @@ section {
   background-color: rgba(0,0,0,0.8);
 }
 
-
-
 /* Close button */
 .close_button {
   position: absolute;
@@ -321,8 +338,6 @@ section {
   text-decoration: none;
   cursor: pointer;
 }
-
-
 
 /* news photo gallery settings */
 .news-photo-gallery {
