@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+  <button class="nav-menu-button-for-narrow-screen" onclick="toggleMenu()">Menu</button>
+  <nav id="nav-menu">
+    <a href="#home" class="active">Home</a>
+    <a href="#events">Wydarzenia K11</a>
+    <a href="#contact">Kontakt</a>
+    <a href="index.html">Powrót do strony głównej</a>
+  </nav>
+
+  <section id="home">
+    <br>
+    <h2>Witamy na podstronie - gdzie gramy</h2>
+    <br>
+    <p>Olsztyńskiego Klubu Gier Planszowych - K11 !</p>
+    <p><a href="index.html" class="button-link">powrót do strony głównej</a></p>
+    <br>
+    <br>
+    <img src="images/website_logo.png" alt="website_logo.png">
+
+  </section>
+
+  <section id="places">
+    <h2>Wydarzenia K11 - Jak się dostać do</h2>
+    <br>
+    <!-- p class information can be found in styles.css file -->
+    <h4>1) Świetlica Rady Osiedla Dajtki, ul. Żytnia 71</h4>
+    <br>
+    <p>Można dojechać komunikacją miejską, autobusami linii: 107, 113.</br>
+    <p>Przystanek na którym trzeba wysiąść to: Żytnia-Szkoła</p>
+    <br>
+    <p>Trzeba podejść do budynku biblioteki. Wejście jest od ulicy Kłosowej</p>
+    <img src="images/gdzie-gramy-dajtki-1.png" alt="gdzie-gramy-dajtki.png">
+    <p>od tyłu budynku biblioteki. Schodzimy do piwnicy (jak widać na zdjęciach)</p>
+    <img src="images/gdzie-gramy-dajtki-2.png" alt="gdzie-gramy-dajtki.png">
+    <br>
+  </section>
+
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <br>
+    <p>Masz pytanie? Napisz do nas maila ! :</p>
+    <p>Email: <a href="mailto:k11.olsztyn@gmail.com">k11.olsztyn@gmail.com</a></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="images/website_logo.png" alt="../website_logo.png">
+    <br>
+    <br>
+    <br>
+    <p><a href="index.html" class="button-link">powrót do strony głównej</a></p>
+    <br>
+  </section>
+  <!-- footer is made dynamically with the help of variable.js and template.js javascript code -->
+  <footer>
+    <p>&copy; <span id="publish-year-from"></span> - <span id="current-year"></span> <span id="site-title"></span></p>
+  </footer>
+  <!-- order how we load files is important ! we have to load variables.js file first and then template.js file ! -->
+  <script src="scripts/variables.js"></script>
+  <script src="scripts/template.js"></script>
+  <script src="scripts/nav_menu_button_for_narrow_screen.js"></script>
+</body>
+</html>
