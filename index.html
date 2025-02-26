@@ -50,22 +50,6 @@
     <button id="toggle-button" onclick="toggleParagraphs()">Rozwiń</button>
   </section>
 
-<script>
-  function toggleParagraphs() {
-    const paragraphs = document.querySelector('.hidden-paragraphs');
-    const button = document.getElementById('toggle-button');
-    
-    if (paragraphs.style.display === 'none') {
-      paragraphs.style.display = 'block';
-      button.textContent = 'Zwiń';
-    } else {
-      paragraphs.style.display = 'none';
-      button.textContent = 'Rozwiń';
-    }
-  }
-</script>
-  
-
   <section id="news">
     <h2>Aktualności</h2>
     <br>
@@ -150,5 +134,6 @@
   <script src="scripts/variables.js"></script>
   <script src="scripts/template.js"></script>
   <script src="scripts/nav_menu_button_for_narrow_screen.js"></script>
+  <script src="scripts/toggleParagraphs.js"></script>
 </body>
 </html>
